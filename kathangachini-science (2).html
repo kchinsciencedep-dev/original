@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Science Department | Kathangachini Senior School</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke-width='12'%3E%3Cellipse cx='100' cy='100' rx='90' ry='32' stroke='%231E7F55'/%3E%3Cellipse cx='100' cy='100' rx='90' ry='32' stroke='%236B3FC4' transform='rotate(60 100 100)'/%3E%3Cellipse cx='100' cy='100' rx='90' ry='32' stroke='%231F4FD8' transform='rotate(120 100 100)'/%3E%3C/g%3E%3Ccircle cx='100' cy='100' r='20' fill='%2312263A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #F2F5F8;
+  --ink: #12263A;
+  --muted: #4B5D6E;
+  --line: #CBD5DF;
+  --focus: #1F4FD8;
+  --red: #C62828;
+  --bio: #1E7F55;   --bio-ink: #FFFFFF;
+  --chem: #6B3FC4;  --chem-ink: #FFFFFF;
+  --phys: #1F4FD8;  --phys-ink: #FFFFFF;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1B27; --ink: #EAF0F6; --muted: #A6B5C4; --line: #2B3E51; --focus: #8FB0FF; --red: #FF6B6B;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1B27; --ink: #EAF0F6; --muted: #A6B5C4; --line: #2B3E51; --focus: #8FB0FF; --red: #FF6B6B;
+}
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: inherit; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 1.0625rem; line-height: 1.65; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.25rem; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700; }
+h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; }
+p { margin: 0 0 1em; max-width: 62ch; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 60px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: .65rem; font-family: var(--display); font-weight: 800; text-decoration: none; font-size: 1.05rem; letter-spacing: -0.01em; }
+.brand small { display: block; font-weight: 500; font-size: .8rem; color: var(--muted); letter-spacing: 0; }
+.mark { width: 2.4rem; height: 2.4rem; flex: none; color: var(--ink); }
+.top-right { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+nav ul { list-style: none; display: flex; gap: 1.4rem; margin: 0; padding: 0; flex-wrap: wrap; }
+nav a { font-family: var(--display); font-weight: 500; text-decoration: none; font-size: .95rem; padding: .4rem 0; border-bottom: 2px solid transparent; }
+nav a:hover { border-bottom-color: currentColor; }
+.theme { font-family: var(--display); font-weight: 500; font-size: .85rem; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: .3rem .85rem; cursor: pointer; }
+.theme:hover { border-color: var(--ink); }
+
+/* hero */
+.hero { padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem); }
+.school-title { font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 7.5vw, 4.8rem); line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: var(--red); margin: 0 0 1.75rem; max-width: none; }
+.hero-video { margin-top: .4rem; }
+.hero-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 2rem; align-items: center; }
+.hero h1 { font-size: clamp(2rem, 5.4vw, 3.8rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; text-transform: uppercase; max-width: 17ch; }
+.by { font-family: var(--display); font-weight: 500; color: var(--muted); margin: 1rem 0 0; }
+.hero p.lede { font-size: 1.2rem; color: var(--muted); margin-top: 1.25rem; }
+.emblem { color: var(--ink); justify-self: center; width: 100%; max-width: 20rem; }
+.emblem svg { width: 100%; height: auto; display: block; }
+.orb { transition: opacity .25s ease; }
+.orb ellipse { fill: none; stroke-width: 8; transition: stroke-width .25s ease; }
+.emblem[data-hl] .orb { opacity: .22; }
+.emblem[data-hl="bio"] .orb-bio, .emblem[data-hl="chem"] .orb-chem, .emblem[data-hl="phys"] .orb-phys { opacity: 1; }
+.emblem[data-hl="bio"] .orb-bio ellipse, .emblem[data-hl="chem"] .orb-chem ellipse, .emblem[data-hl="phys"] .orb-phys ellipse { stroke-width: 13; }
+
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-top: 2.5rem; padding: 0; list-style: none; }
+.tile { all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; min-height: 15rem; width: 100%; padding: 1.1rem 1.1rem 1.2rem; border-radius: 6px; position: relative; transition: transform .18s ease, box-shadow .18s ease; }
+.tile:hover { transform: translateY(-4px); }
+.tile:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.tile[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px var(--ink); }
+.tile .sym { font-family: var(--display); font-weight: 800; font-size: clamp(3.4rem, 8vw, 5.2rem); line-height: .9; letter-spacing: -0.04em; }
+.tile .name { font-family: var(--display); font-weight: 700; font-size: 1.15rem; margin-top: auto; }
+.tile .what { display: block; font-size: .95rem; line-height: 1.4; margin-top: .3rem; opacity: .95; }
+.t-bio { background: var(--bio); color: var(--bio-ink); }
+.t-chem { background: var(--chem); color: var(--chem-ink); }
+.t-phys { background: var(--phys); color: var(--phys-ink); }
+.hint { margin: .9rem 0 0; font-size: .95rem; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(2.5rem, 6vw, 4rem) 0; border-top: 1px solid var(--line); }
+.head-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.reset { font-family: var(--display); font-weight: 500; font-size: .95rem; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: .35rem .9rem; cursor: pointer; }
+.reset[hidden] { display: none; }
+.reset:hover { border-color: var(--ink); }
+
+.fact-text { font-family: var(--display); font-weight: 700; font-size: clamp(1.4rem, 3.2vw, 2rem); line-height: 1.25; letter-spacing: -0.015em; max-width: 34ch; margin: .4rem 0 1.25rem; min-height: 5.2em; }
+.fact .tag { font-size: .95rem; }
+.fact-btn { font-family: var(--display); font-weight: 700; font-size: 1rem; background: var(--ink); color: var(--bg); border: 2px solid var(--ink); border-radius: 999px; padding: .55rem 1.3rem; cursor: pointer; }
+.fact-btn:hover { background: none; color: var(--ink); }
+
+.feed { list-style: none; margin: 0; padding: 0; }
+.feed li { display: grid; grid-template-columns: 4.5rem 1fr; gap: .5rem 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+.feed li[hidden] { display: none; }
+.badge { width: 3.4rem; height: 3.4rem; border-radius: 6px; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; }
+.b-bio { background: var(--bio); color: var(--bio-ink); }
+.b-chem { background: var(--chem); color: var(--chem-ink); }
+.b-phys { background: var(--phys); color: var(--phys-ink); }
+.b-all { background: var(--ink); color: var(--bg); }
+.feed h3 { margin-bottom: .3rem; }
+.feed p { margin: 0; color: var(--muted); }
+.tag { display: inline-flex; align-items: center; gap: .4rem; font-family: var(--display); font-size: .85rem; font-weight: 500; color: var(--muted); margin-bottom: .35rem; }
+.tag::before { content: ""; width: .7rem; height: .7rem; border-radius: 2px; background: var(--c); }
+.c-bio { --c: var(--bio); } .c-chem { --c: var(--chem); } .c-phys { --c: var(--phys); } .c-all { --c: var(--ink); }
+
+.programs { width: 100%; border-collapse: collapse; }
+.programs th, .programs td { text-align: left; vertical-align: top; padding: .9rem 1rem .9rem 0; border-bottom: 1px solid var(--line); }
+.programs th { font-family: var(--display); font-weight: 700; white-space: nowrap; }
+.programs td { color: var(--muted); }
+.scroll-x { overflow-x: auto; }
+.sr { position: absolute; left: -9999px; }
+
+.labs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.labs p { color: var(--muted); }
+
+.welcome { margin: 0; font-size: 1.25rem; line-height: 1.55; max-width: 52ch; }
+.staff { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem 2.5rem; }
+.staff li { border-left: 4px solid var(--c); padding-left: .9rem; transition: opacity .2s ease; }
+.staff.filtering li:not(.on) { opacity: .35; }
+.staff strong { font-family: var(--display); font-weight: 700; display: block; }
+.staff span { color: var(--muted); font-size: .95rem; }
+.staff p { margin: .45rem 0 0; color: var(--muted); font-size: .95rem; line-height: 1.55; }
+
+/* periodic table */
+.k-al { --cbg: #D6453D; --cfg: #FFFFFF; }
+.k-ae { --cbg: #E07B1F; --cfg: #12263A; }
+.k-tm { --cbg: #3F6BBE; --cfg: #FFFFFF; }
+.k-pt { --cbg: #237A7A; --cfg: #FFFFFF; }
+.k-md { --cbg: #B5CF4A; --cfg: #12263A; }
+.k-nm { --cbg: #3B8F4F; --cfg: #FFFFFF; }
+.k-hl { --cbg: #F2B01E; --cfg: #12263A; }
+.k-ng { --cbg: #7E55B8; --cfg: #FFFFFF; }
+.k-ln { --cbg: #B84A7E; --cfg: #FFFFFF; }
+.k-ac { --cbg: #9A5B3C; --cfg: #FFFFFF; }
+.k-un { --cbg: #5E6E7C; --cfg: #FFFFFF; }
+.el-detail { display: grid; grid-template-columns: 9rem 1fr; gap: 1.5rem; align-items: center; margin-bottom: 1.5rem; }
+.el-big { aspect-ratio: 1; border-radius: 8px; display: grid; place-items: center; position: relative; background: var(--cbg); color: var(--cfg); }
+.el-big .n { position: absolute; top: .5rem; left: .7rem; font-family: var(--display); font-weight: 700; font-size: 1rem; }
+.el-big .s { font-family: var(--display); font-weight: 800; font-size: 3.6rem; letter-spacing: -0.03em; line-height: 1; }
+.el-info h3 { font-size: 1.7rem; margin-bottom: .5rem; }
+.el-info p { margin: 0 0 .35rem; color: var(--muted); max-width: 52ch; }
+.el-info .line { display: block; }
+.keys { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1rem; }
+.key { font-family: var(--display); font-weight: 500; font-size: .85rem; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: .25rem .8rem .25rem .6rem; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
+.key::before { content: ""; width: .75rem; height: .75rem; border-radius: 2px; background: var(--cbg); }
+.key:hover { border-color: var(--ink); }
+.key[aria-pressed="true"] { border-color: var(--ink); font-weight: 700; }
+.ptable { display: grid; grid-template-columns: repeat(18, minmax(2.4rem, 1fr)); grid-template-rows: repeat(7, auto) .9rem repeat(2, auto); gap: 3px; min-width: 47rem; }
+.el { all: unset; box-sizing: border-box; cursor: pointer; aspect-ratio: 1; display: grid; place-items: center; position: relative; border-radius: 3px; background: var(--cbg); color: var(--cfg); font-family: var(--display); font-weight: 700; font-size: .95rem; line-height: 1; transition: transform .12s ease, opacity .2s ease; }
+.el .z { position: absolute; top: 2px; left: 3px; font-size: .55rem; font-weight: 500; }
+.el:hover { transform: scale(1.12); z-index: 2; }
+.el:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; z-index: 3; }
+.el[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--ink); z-index: 2; }
+.ptable.dim .el:not(.hit) { opacity: .2; }
+.ptable-note { font-size: .9rem; color: var(--muted); margin: 1rem 0 0; }
+@media (prefers-reduced-motion: reduce) { .el { transition: none; } }
+@media (max-width: 560px) { .el-detail { grid-template-columns: 6.5rem 1fr; gap: 1rem; } .el-big .s { font-size: 2.4rem; } }
+
+/* students corner and dialog */
+.corner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.corner-card { border: 1px solid var(--line); border-radius: 8px; padding: 1.5rem; }
+.corner-card h3 { margin-bottom: .5rem; }
+.corner-card > p { color: var(--muted); }
+.msg-form { display: grid; gap: .9rem; }
+.msg-form label { display: grid; gap: .3rem; font-family: var(--display); font-weight: 500; font-size: .95rem; }
+.msg-form input, .msg-form textarea, .msg-form select { font-family: var(--body); font-size: 1rem; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: .55rem .7rem; width: 100%; }
+.msg-form textarea { resize: vertical; }
+.send-row { display: flex; flex-wrap: wrap; gap: .6rem; }
+.form-note { font-size: .9rem; color: var(--muted); margin: 0; min-height: 1.4em; }
+dialog { border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); padding: 0; width: min(32rem, calc(100% - 2rem)); max-height: calc(100% - 2rem); overflow: auto; }
+dialog::backdrop { background: rgba(10, 20, 30, .55); }
+.dlg-body { padding: 1.5rem; }
+.dlg-body h3 { font-size: 1.5rem; margin-bottom: .4rem; }
+.dlg-body > p { color: var(--muted); }
+.video-link { margin-top: .6rem; }
+
+/* subject notes */
+.curriculum-note { color: var(--muted); max-width: 62ch; margin-bottom: 1.5rem; }
+.subject { border-top: 1px solid var(--line); }
+.subject:last-of-type { border-bottom: 1px solid var(--line); }
+.subject summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 1rem; padding: 1.1rem 0; font-family: var(--display); font-weight: 700; font-size: 1.3rem; }
+.subject summary::-webkit-details-marker { display: none; }
+.subject summary::before { content: ""; width: 1.1rem; height: 1.1rem; border-radius: 3px; background: var(--c); flex: none; }
+.subject summary::after { content: "+"; margin-left: auto; font-size: 1.6rem; font-weight: 500; }
+.subject[open] summary::after { content: "\2212"; }
+.subject summary small { font-weight: 500; font-size: .9rem; color: var(--muted); }
+.subject .body { padding: 0 0 1.5rem 2.1rem; }
+.subject h4 { font-family: var(--display); font-size: 1rem; margin: 1.3rem 0 .4rem; }
+.subject ul { margin: 0; padding-left: 1.2rem; color: var(--muted); }
+.subject li { margin-bottom: .4rem; }
+.subject .body p { color: var(--muted); margin: 0; }
+
+footer { border-top: 1px solid var(--line); padding: 2.5rem 0 3rem; }
+footer .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 2rem; }
+footer h3 { margin-bottom: .5rem; }
+footer p { margin: 0 0 .3rem; color: var(--muted); }
+.call { display: inline-block; margin-top: .3rem; font-family: var(--display); font-weight: 700; text-decoration: none; border: 2px solid var(--ink); border-radius: 999px; padding: .4rem 1.1rem; color: var(--ink); }
+.call:hover { background: var(--ink); color: var(--bg); }
+.note { margin-top: 2rem; font-size: .9rem; color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .tile { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+  .tiles li:nth-child(2) .tile { animation-delay: .1s; }
+  .tiles li:nth-child(3) .tile { animation-delay: .2s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .tile, .staff li, .orb, .orb ellipse { transition: none; } }
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .emblem { max-width: 11rem; justify-self: start; }
+  .tiles { grid-template-columns: 1fr; }
+  .tile { min-height: 11rem; }
+  .labs, footer .grid, .corner { grid-template-columns: 1fr; }
+  .staff { grid-template-columns: 1fr; }
+  .feed li { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) { .staff { grid-template-columns: 1fr; } nav ul { gap: 1rem; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <g fill="none" stroke-width="12">
+          <ellipse cx="100" cy="100" rx="90" ry="32" stroke="#1E7F55"/>
+          <ellipse cx="100" cy="100" rx="90" ry="32" stroke="#6B3FC4" transform="rotate(60 100 100)"/>
+          <ellipse cx="100" cy="100" rx="90" ry="32" stroke="#1F4FD8" transform="rotate(120 100 100)"/>
+        </g>
+        <circle cx="100" cy="100" r="20" fill="currentColor"/>
+      </svg>
+      <span>Science Department<small>Kathangachini Senior School</small></span>
+    </a>
+    <div class="top-right">
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#news">News</a></li>
+          <li><a href="#programs">Subjects</a></li>
+          <li><a href="#table">Periodic table</a></li>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#people">Team</a></li>
+          <li><a href="#students">Students</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" id="theme" type="button">Dark mode</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="school-title">Kathangachini Senior School</p>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1>The important thing is not to stop questioning.</h1>
+          <p class="by">Albert Einstein</p>
+          <p class="lede">The Science Department at Kathangachini Senior School teaches biology, chemistry and physics from Grade 10 and Form 3 to Form 4. Pick a subject to see its news and its teacher.</p>
+          <a class="call hero-video" href="https://drive.google.com/drive/folders/11RTxyAHcQr2Oa-YPXS-DuZ8Zw1LOPljo" target="_blank" rel="noopener">Watch practical videos</a>
+        </div>
+        <div class="emblem" id="emblem">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Atom emblem with green, purple and blue orbits for biology, chemistry and physics">
+            <g class="orb orb-bio">
+              <ellipse cx="100" cy="100" rx="90" ry="32" stroke="#1E7F55"/>
+              <circle r="9" fill="#1E7F55"><animateMotion dur="7s" repeatCount="indefinite" path="M190,100 A90,32 0 1,1 10,100 A90,32 0 1,1 190,100"/></circle>
+            </g>
+            <g class="orb orb-chem" transform="rotate(60 100 100)">
+              <ellipse cx="100" cy="100" rx="90" ry="32" stroke="#6B3FC4"/>
+              <circle r="9" fill="#6B3FC4"><animateMotion dur="9s" repeatCount="indefinite" path="M190,100 A90,32 0 1,1 10,100 A90,32 0 1,1 190,100"/></circle>
+            </g>
+            <g class="orb orb-phys" transform="rotate(120 100 100)">
+              <ellipse cx="100" cy="100" rx="90" ry="32" stroke="#1F4FD8"/>
+              <circle r="9" fill="#1F4FD8"><animateMotion dur="11s" repeatCount="indefinite" path="M190,100 A90,32 0 1,1 10,100 A90,32 0 1,1 190,100"/></circle>
+            </g>
+            <circle cx="100" cy="100" r="16" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <ul class="tiles" aria-label="Subjects">
+        <li><button class="tile t-bio" data-filter="bio" aria-pressed="false">
+          <span class="sym" aria-hidden="true">Bi</span>
+          <span><span class="name">Biology</span><span class="what">Cells, living things and how they depend on each other</span></span>
+        </button></li>
+        <li><button class="tile t-chem" data-filter="chem" aria-pressed="false">
+          <span class="sym" aria-hidden="true">Ch</span>
+          <span><span class="name">Chemistry</span><span class="what">Reactions, materials and safe lab technique</span></span>
+        </button></li>
+        <li><button class="tile t-phys" data-filter="phys" aria-pressed="false">
+          <span class="sym" aria-hidden="true">Ph</span>
+          <span><span class="name">Physics</span><span class="what">Forces, energy, waves and electricity</span></span>
+        </button></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block fact" id="fact">
+    <div class="wrap">
+      <h2>Did you know?</h2>
+      <p class="fact-text" id="fact-text" aria-live="polite"></p>
+      <span class="tag c-bio" id="fact-tag">Biology</span><br>
+      <button class="fact-btn" id="fact-btn" type="button">Show another fact</button>
+    </div>
+  </section>
+
+  <section class="block" id="news">
+    <div class="wrap">
+      <div class="head-row">
+        <h2>News and events</h2>
+        <button class="reset" id="reset" type="button" hidden>Show all subjects</button>
+      </div>
+      <p class="hint" id="status" role="status" aria-live="polite" style="margin:-.75rem 0 1rem">Showing all subjects.</p>
+      <ul class="feed" id="feed">
+        <li data-d="all">
+          <div class="badge b-all" aria-hidden="true">Sc</div>
+          <div><span class="tag c-all">Whole department</span><h3>Science fair project sign-up opens</h3><p>Students choose a question, a method and a partner.</p></div>
+        </li>
+        <li data-d="phys">
+          <div class="badge b-phys" aria-hidden="true">Ph</div>
+          <div><span class="tag c-phys">Physics</span><h3>Bridge-building challenge</h3><p>Teams build a bridge from paper and tape, then load it until it fails.</p></div>
+        </li>
+        <li data-d="bio">
+          <div class="badge b-bio" aria-hidden="true">Bi</div>
+          <div><span class="tag c-bio">Biology</span><h3>Field study trip</h3><p>Classes collect and record living things in the school surroundings.</p></div>
+        </li>
+        <li data-d="chem">
+          <div class="badge b-chem" aria-hidden="true">Ch</div>
+          <div><span class="tag c-chem">Chemistry</span><h3>Lab safety refresher</h3><p>Required before practical work. Covers goggles, spills and waste disposal.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="programs">
+    <div class="wrap">
+      <h2 style="margin-bottom:1.5rem">What we teach</h2>
+      <div class="scroll-x">
+        <table class="programs">
+          <thead class="sr"><tr><th>Subject</th><th>Classes</th><th>Teacher</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Biology</th><td>Grade 10, Form 3 and Form 4</td><td>Mr Ruben</td></tr>
+            <tr><th scope="row">Chemistry</th><td>Grade 10, Form 3 and Form 4</td><td>Mr Murithi</td></tr>
+            <tr><th scope="row">Physics</th><td>Grade 10, Form 3 and Form 4</td><td>Mr Lawi</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+      <section class="block" id="notes">
+    <div class="wrap">
+      <h2 style="margin-bottom:1rem">Subject notes</h2>
+      <p class="curriculum-note">Grade 10 learners follow the Competency Based Curriculum (CBC) senior school syllabus. Form 3 and Form 4 learners follow the KCSE syllabus. These are short summaries, so your teacher's notes and the official syllabus always come first.</p>
+
+      <details class="subject" style="--c:var(--bio)" open>
+        <summary>Biology <small>Mr Ruben</small></summary>
+        <div class="body">
+          <p>Biology is the study of living things and how they live, grow, reproduce and depend on their surroundings. Lessons mix theory with practical work such as using a microscope, testing foods and studying plants and animals.</p>
+          <h4>What you study</h4>
+          <ul>
+            <li>Cells, tissues and how living things are classified</li>
+            <li>Nutrition, transport, gaseous exchange, respiration and excretion</li>
+            <li>Reproduction in plants and animals</li>
+            <li>Genetics and evolution</li>
+            <li>Ecology, the environment, health and disease</li>
+          </ul>
+          <h4>Key notes</h4>
+          <ul>
+            <li>The cell is the basic unit of life. Plant cells have a cell wall, chloroplasts and a large vacuole, which animal cells lack.</li>
+            <li>Photosynthesis: carbon dioxide and water, with light energy absorbed by chlorophyll, make glucose and oxygen.</li>
+            <li>Respiration releases energy from glucose. Aerobic respiration uses oxygen and produces carbon dioxide and water.</li>
+            <li>Genes are sections of DNA that carry the instructions for inherited traits. A dominant allele shows even when only one copy is present.</li>
+            <li>In an ecosystem, energy flows from producers to consumers along food chains, and less energy is available at each step.</li>
+          </ul>
+          <h4>Practical skills</h4>
+          <p>Using a light microscope, drawing and labelling specimens, testing foods for starch, sugars, proteins and fats, and recording observations accurately.</p>
+        </div>
+      </details>
+
+      <details class="subject" style="--c:var(--chem)">
+        <summary>Chemistry <small>Mr Murithi</small></summary>
+        <div class="body">
+          <p>Chemistry is the study of matter, what it is made of and how it changes. Lessons explain the reactions around us, from rusting and cooking to making soap, and include hands-on laboratory practicals.</p>
+          <h4>What you study</h4>
+          <ul>
+            <li>Atoms, the periodic table and chemical bonding</li>
+            <li>The mole and chemical calculations</li>
+            <li>Acids, bases and salts</li>
+            <li>Rates of reaction and equilibrium</li>
+            <li>Oxidation, reduction and electrolysis</li>
+            <li>Carbon compounds, metals, non-metals and industrial processes</li>
+          </ul>
+          <h4>Key notes</h4>
+          <ul>
+            <li>Atoms have protons and neutrons in the nucleus and electrons in shells around it. The atomic number is the number of protons.</li>
+            <li>The pH scale runs from 0 to 14. Below 7 is acidic, 7 is neutral and above 7 is alkaline.</li>
+            <li>One mole of any substance contains 6.02 &times; 10<sup>23</sup> particles. Moles = mass &divide; molar mass.</li>
+            <li>Reactions go faster with a higher temperature, a higher concentration, a larger surface area or a catalyst.</li>
+            <li>Oxidation is loss of electrons and reduction is gain of electrons.</li>
+          </ul>
+          <h4>Practical skills</h4>
+          <p>Titration, qualitative analysis (testing for ions and gases), handling apparatus safely, and recording burette readings and results in tables.</p>
+        </div>
+      </details>
+
+      <details class="subject" style="--c:var(--phys)">
+        <summary>Physics <small>Mr Lawi</small></summary>
+        <div class="body">
+          <p>Physics is the study of matter, energy, forces and how they interact. Lessons explain how everyday things work, from lights and machines to sound and heat, using measurements and experiments.</p>
+          <h4>What you study</h4>
+          <ul>
+            <li>Measurement, motion and forces</li>
+            <li>Work, energy, power and machines</li>
+            <li>Heat and temperature</li>
+            <li>Light, waves and sound</li>
+            <li>Electricity and magnetism</li>
+            <li>Atomic and nuclear physics</li>
+          </ul>
+          <h4>Key notes</h4>
+          <ul>
+            <li>Speed = distance &divide; time. Acceleration is the change in velocity per unit of time.</li>
+            <li>Newton's laws: an object keeps its motion unless a force acts, force = mass &times; acceleration, and every action has an equal and opposite reaction.</li>
+            <li>Work done = force &times; distance moved. Power = work &divide; time, measured in watts.</li>
+            <li>Ohm's law: voltage = current &times; resistance (V = IR).</li>
+            <li>Light reflects at equal angles and bends (refracts) when it passes between materials such as air and glass.</li>
+          </ul>
+          <h4>Practical skills</h4>
+          <p>Measuring with rulers, timers, ammeters and voltmeters, plotting graphs, and finding sources of error in an experiment.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="block" id="table">
+    <div class="wrap">
+      <h2 style="margin-bottom:1.5rem">Periodic table</h2>
+      <div class="el-detail" aria-live="polite">
+        <div class="el-big" id="el-big"><span class="n" id="el-n"></span><span class="s" id="el-s"></span></div>
+        <div class="el-info"><h3 id="el-name"></h3><p id="el-meta"></p><p id="el-desc"></p></div>
+      </div>
+      <div class="keys" id="keys" role="group" aria-label="Show one family of elements"></div>
+      <div class="scroll-x"><div class="ptable" id="ptable" role="group" aria-label="Periodic table of the elements"></div></div>
+      <p class="ptable-note">Select any element to read about it, or pick a family above to highlight it. For radioactive elements, the mass shown is the mass number of a well-known isotope.</p>
+    </div>
+  </section>
+
+    <section class="block" id="videos">
+    <div class="wrap">
+      <h2 style="margin-bottom:1rem">Practical videos</h2>
+      <p>Watch recorded practical lessons for Biology, Chemistry and Physics. Use them to revise before your next lab session or practical paper.</p>
+      <a class="call video-link" href="https://drive.google.com/drive/folders/11RTxyAHcQr2Oa-YPXS-DuZ8Zw1LOPljo" target="_blank" rel="noopener">Open the practical videos on Google Drive</a>
+    </div>
+  </section>
+
+  <section class="block" id="labs">
+    <div class="wrap">
+      <h2 style="margin-bottom:1.5rem">Our laboratories</h2>
+      <div class="labs">
+        <div><h3>Biology</h3><p>Practical lessons with microscopes, specimens and field work.</p></div>
+        <div><h3>Chemistry</h3><p>Experiments run with safety equipment and supervision.</p></div>
+        <div><h3>Physics</h3><p>Hands-on work with circuits, forces and measurements.</p></div>
+      </div>
+      <p style="margin-top:1.5rem;color:var(--muted)">Equipment and chemicals are managed by our lab manager, Mr Munene.</p>
+    </div>
+  </section>
+
+  <section class="block" id="people">
+    <div class="wrap">
+      <h2 style="margin-bottom:1.5rem">Our team</h2>
+      <p class="welcome">Welcome to the Science Department at Kathangachini Senior School. Our students learn by measuring, testing and asking why, and our teachers keep lessons close to real practical work.</p>
+      <ul class="staff" id="staff">
+        <li data-d="bio" style="--c:var(--bio)"><strong>Mr Ruben</strong><span>Biology teacher</span><p>Teaches Biology to Grade 10, Form 3 and Form 4 classes and leads practical lessons on living things.</p></li>
+        <li data-d="chem" style="--c:var(--chem)"><strong>Mr Murithi</strong><span>Chemistry teacher</span><p>Teaches Chemistry to Grade 10, Form 3 and Form 4 classes and supervises experiments in the laboratory.</p></li>
+        <li data-d="phys" style="--c:var(--phys)"><strong>Mr Lawi</strong><span>Physics teacher</span><p>Teaches Physics to Grade 10, Form 3 and Form 4 classes, covering forces, energy, waves and electricity through hands-on work.</p></li>
+        <li data-d="all" style="--c:var(--ink)"><strong>Mr Munene</strong><span>Lab manager</span><p>Looks after the laboratories, equipment and chemicals, and helps set up practical lessons for all three subjects.</p></li>
+      </ul>
+    </div>
+  </section>
+  <section class="block" id="students">
+    <div class="wrap">
+      <h2 style="margin-bottom:1.5rem">Students' corner</h2>
+      <div class="corner">
+        <div class="corner-card">
+          <h3>Ask a question</h3>
+          <p>Stuck on a practical or a topic? Open the question box and send your question to the department.</p>
+          <button type="button" class="fact-btn" id="ask-open">Open the question box</button>
+        </div>
+        <div class="corner-card">
+          <h3>Suggestion box</h3>
+          <p>Tell us how we can make science lessons, labs or this website better.</p>
+          <form class="msg-form" id="sug-form">
+            <label>Your name (optional)<input type="text" name="name" autocomplete="name"></label>
+            <label>Your suggestion<textarea name="msg" rows="4" required></textarea></label>
+            <div class="send-row">
+              <button type="submit" class="fact-btn" data-via="wa">Send on WhatsApp</button>
+              <button type="submit" class="reset" data-via="sms">Send as SMS</button>
+            </div>
+            <p class="form-note" id="sug-note" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog id="ask-dialog" aria-labelledby="ask-title">
+  <div class="dlg-body">
+    <h3 id="ask-title">Ask a question</h3>
+    <p>Your message is sent to the school customer care desk by WhatsApp or SMS from your own phone, so add your name and class. For help with a topic, you can also reach out to your HOD or subject teacher.</p>
+    <form class="msg-form" id="ask-form">
+      <label>Your name<input type="text" name="name" autocomplete="name"></label>
+      <label>Your class
+        <select name="cls"><option>Grade 10</option><option>Form 3</option><option>Form 4</option></select>
+      </label>
+      <label>Subject
+        <select name="subj"><option>Biology</option><option>Chemistry</option><option>Physics</option><option>Not sure</option></select>
+      </label>
+      <label>Your question<textarea name="msg" rows="4" required></textarea></label>
+      <div class="send-row">
+        <button type="submit" class="fact-btn" data-via="wa">Send on WhatsApp</button>
+        <button type="submit" class="reset" data-via="sms">Send as SMS</button>
+        <button type="button" class="reset" id="ask-close">Close</button>
+      </div>
+      <p class="form-note" id="ask-note" role="status"></p>
+    </form>
+  </div>
+</dialog>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="grid">
+      <div><h3>School</h3><p>Kathangachini Senior School</p><p>Science Department</p></div>
+      <div><h3>Need help with science?</h3><p>Reach out to our Head of Department (HOD) for assistance with subjects, practicals and the laboratories.</p></div>
+      <div><h3>Website help</h3><p>Our customer care desk helps with using this website.</p><a class="call" href="tel:+254742519786">0742 519 786</a></div>
+      <div><h3>For students</h3><p>Lab access and equipment: ask the lab manager, Mr Munene.</p><p>Subject questions: ask your subject teacher.</p></div>
+    </div>
+    <p class="note">© Science Department, Kathangachini Senior School<br><a href="admin.html">Staff area</a> (sign-in required)</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var tiles = document.querySelectorAll('.tile');
+  var items = document.querySelectorAll('#feed li');
+  var staff = document.getElementById('staff');
+  var people = staff.querySelectorAll('li');
+  var reset = document.getElementById('reset');
+  var status = document.getElementById('status');
+  var emblem = document.getElementById('emblem');
+  var names = { bio: 'Biology', chem: 'Chemistry', phys: 'Physics' };
+  var current = null;
+
+  /* Dark and light mode */
+  var tbtn = document.getElementById('theme');
+  try { var saved = localStorage.getItem('sci-theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  function isDark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function setLabel() { tbtn.textContent = isDark() ? 'Light mode' : 'Dark mode'; }
+  tbtn.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('sci-theme', next); } catch (e) {}
+    setLabel();
+  });
+  setLabel();
+
+  /* Stop the orbiting dots for people who prefer less motion */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var svg = emblem.querySelector('svg');
+    if (svg && svg.pauseAnimations) svg.pauseAnimations();
+  }
+
+  /* Science facts */
+  var facts = [
+    { d: 'bio', t: 'A leaf has thousands of tiny pores called stomata that open and close to let gases in and out.' },
+    { d: 'bio', t: 'Mature red blood cells have no nucleus, which leaves more room to carry oxygen.' },
+    { d: 'chem', t: 'Ice floats because water is less dense as a solid than as a liquid.' },
+    { d: 'chem', t: 'Sodium and chlorine are both dangerous on their own, yet together they make table salt.' },
+    { d: 'phys', t: 'Sunlight takes about eight minutes to reach Earth.' },
+    { d: 'phys', t: 'Sound cannot travel through empty space because it needs a material to pass through.' }
+  ];
+  var factText = document.getElementById('fact-text');
+  var factTag = document.getElementById('fact-tag');
+  var factBtn = document.getElementById('fact-btn');
+  var fIdx = -1;
+  function nextFact() {
+    var pool = facts.filter(function (x) { return !current || x.d === current; });
+    fIdx = (fIdx + 1) % pool.length;
+    var f = pool[fIdx];
+    factText.textContent = f.t;
+    factTag.className = 'tag c-' + f.d;
+    factTag.textContent = names[f.d];
+  }
+  factBtn.addEventListener('click', nextFact);
+
+  /* Subject filter, staff highlight, orbit highlight */
+  function highlight(f) {
+    if (f) emblem.setAttribute('data-hl', f); else emblem.removeAttribute('data-hl');
+  }
+
+  function apply(f) {
+    current = f;
+    tiles.forEach(function (t) { t.setAttribute('aria-pressed', String(t.dataset.filter === f)); });
+    var shown = 0;
+    items.forEach(function (li) {
+      var show = !f || li.dataset.d === f || li.dataset.d === 'all';
+      li.hidden = !show;
+      if (show) shown++;
+    });
+    staff.classList.toggle('filtering', !!f);
+    people.forEach(function (li) {
+      li.classList.toggle('on', !!f && (li.dataset.d === f || li.dataset.d === 'all'));
+    });
+    highlight(f);
+    reset.hidden = !f;
+    status.textContent = f ? 'Showing ' + names[f] + ' and whole-department items (' + shown + ').' : 'Showing all subjects.';
+    fIdx = -1;
+    nextFact();
+  }
+
+  tiles.forEach(function (t) {
+    t.addEventListener('click', function () {
+      var f = t.dataset.filter === current ? null : t.dataset.filter;
+      apply(f);
+      if (f) document.getElementById('news').scrollIntoView();
+    });
+    t.addEventListener('mouseenter', function () { highlight(t.dataset.filter); });
+    t.addEventListener('focus', function () { highlight(t.dataset.filter); });
+    t.addEventListener('mouseleave', function () { highlight(current); });
+    t.addEventListener('blur', function () { highlight(current); });
+  });
+  reset.addEventListener('click', function () { apply(null); });
+
+  /* Periodic table */
+  var raw = "H,Hydrogen,1.008;He,Helium,4.0026;Li,Lithium,6.94;Be,Beryllium,9.0122;B,Boron,10.81;C,Carbon,12.011;N,Nitrogen,14.007;O,Oxygen,15.999;F,Fluorine,18.998;Ne,Neon,20.180;Na,Sodium,22.990;Mg,Magnesium,24.305;Al,Aluminium,26.982;Si,Silicon,28.085;P,Phosphorus,30.974;S,Sulfur,32.06;Cl,Chlorine,35.45;Ar,Argon,39.95;K,Potassium,39.098;Ca,Calcium,40.078;Sc,Scandium,44.956;Ti,Titanium,47.867;V,Vanadium,50.942;Cr,Chromium,51.996;Mn,Manganese,54.938;Fe,Iron,55.845;Co,Cobalt,58.933;Ni,Nickel,58.693;Cu,Copper,63.546;Zn,Zinc,65.38;Ga,Gallium,69.723;Ge,Germanium,72.630;As,Arsenic,74.922;Se,Selenium,78.971;Br,Bromine,79.904;Kr,Krypton,83.798;Rb,Rubidium,85.468;Sr,Strontium,87.62;Y,Yttrium,88.906;Zr,Zirconium,91.224;Nb,Niobium,92.906;Mo,Molybdenum,95.95;Tc,Technetium,98;Ru,Ruthenium,101.07;Rh,Rhodium,102.91;Pd,Palladium,106.42;Ag,Silver,107.87;Cd,Cadmium,112.41;In,Indium,114.82;Sn,Tin,118.71;Sb,Antimony,121.76;Te,Tellurium,127.60;I,Iodine,126.90;Xe,Xenon,131.29;Cs,Caesium,132.91;Ba,Barium,137.33;La,Lanthanum,138.91;Ce,Cerium,140.12;Pr,Praseodymium,140.91;Nd,Neodymium,144.24;Pm,Promethium,145;Sm,Samarium,150.36;Eu,Europium,151.96;Gd,Gadolinium,157.25;Tb,Terbium,158.93;Dy,Dysprosium,162.50;Ho,Holmium,164.93;Er,Erbium,167.26;Tm,Thulium,168.93;Yb,Ytterbium,173.05;Lu,Lutetium,174.97;Hf,Hafnium,178.49;Ta,Tantalum,180.95;W,Tungsten,183.84;Re,Rhenium,186.21;Os,Osmium,190.23;Ir,Iridium,192.22;Pt,Platinum,195.08;Au,Gold,196.97;Hg,Mercury,200.59;Tl,Thallium,204.38;Pb,Lead,207.2;Bi,Bismuth,208.98;Po,Polonium,209;At,Astatine,210;Rn,Radon,222;Fr,Francium,223;Ra,Radium,226;Ac,Actinium,227;Th,Thorium,232.04;Pa,Protactinium,231.04;U,Uranium,238.03;Np,Neptunium,237;Pu,Plutonium,244;Am,Americium,243;Cm,Curium,247;Bk,Berkelium,247;Cf,Californium,251;Es,Einsteinium,252;Fm,Fermium,257;Md,Mendelevium,258;No,Nobelium,259;Lr,Lawrencium,266;Rf,Rutherfordium,267;Db,Dubnium,268;Sg,Seaborgium,269;Bh,Bohrium,270;Hs,Hassium,277;Mt,Meitnerium,278;Ds,Darmstadtium,281;Rg,Roentgenium,282;Cn,Copernicium,285;Nh,Nihonium,286;Fl,Flerovium,289;Mc,Moscovium,290;Lv,Livermorium,293;Ts,Tennessine,294;Og,Oganesson,294";
+  var els = raw.split(';').map(function (t, i) { var p = t.split(','); return { n: i + 1, s: p[0], name: p[1], m: p[2] }; });
+  var fams = {
+    al: ['Alkali metals', 'Soft, very reactive metals. Sodium and potassium react strongly with water.'],
+    ae: ['Alkaline earth metals', 'Reactive metals, though less so than the alkali metals. Calcium is found in bones and teeth.'],
+    tm: ['Transition metals', 'Hard, strong metals that often form coloured compounds. Iron, copper and zinc are examples.'],
+    pt: ['Post-transition metals', 'Softer metals found next to the metalloids. Aluminium and lead are examples.'],
+    md: ['Metalloids', 'Elements with properties between metals and nonmetals. Silicon is used in computer chips.'],
+    nm: ['Reactive nonmetals', 'Nonmetals such as carbon, nitrogen and oxygen, which are the basis of living things.'],
+    hl: ['Halogens', 'Very reactive nonmetals that form salts with metals. Chlorine and iodine are examples.'],
+    ng: ['Noble gases', 'Gases that rarely react with other elements. Helium and neon are examples.'],
+    ln: ['Lanthanides', 'A row of similar metals that are used in magnets and electronics.'],
+    ac: ['Actinides', 'Radioactive metals. Uranium is one example.'],
+    un: ['Unknown properties', 'Very heavy elements made in laboratories. Their properties are still being studied.']
+  };
+  function catOf(n) {
+    function has(list) { return list.indexOf(n) > -1; }
+    if (has([3, 11, 19, 37, 55, 87])) return 'al';
+    if (has([4, 12, 20, 38, 56, 88])) return 'ae';
+    if ((n >= 57 && n <= 71)) return 'ln';
+    if ((n >= 89 && n <= 103)) return 'ac';
+    if ((n >= 21 && n <= 30) || (n >= 39 && n <= 48) || (n >= 72 && n <= 80) || (n >= 104 && n <= 108)) return 'tm';
+    if (has([13, 31, 49, 50, 81, 82, 83, 84])) return 'pt';
+    if (has([5, 14, 32, 33, 51, 52])) return 'md';
+    if (has([1, 6, 7, 8, 15, 16, 34])) return 'nm';
+    if (has([9, 17, 35, 53, 85])) return 'hl';
+    if (has([2, 10, 18, 36, 54, 86])) return 'ng';
+    return 'un';
+  }
+  function pos(n) {
+    if (n === 1) return [1, 1];
+    if (n === 2) return [1, 18];
+    if (n <= 4) return [2, n - 2];
+    if (n <= 10) return [2, n + 8];
+    if (n <= 12) return [3, n - 10];
+    if (n <= 18) return [3, n];
+    if (n <= 36) return [4, n - 18];
+    if (n <= 54) return [5, n - 36];
+    if (n <= 56) return [6, n - 54];
+    if (n <= 70) return [9, n - 54];
+    if (n === 71) return [6, 3];
+    if (n <= 86) return [6, n - 68];
+    if (n <= 88) return [7, n - 86];
+    if (n <= 102) return [10, n - 86];
+    if (n === 103) return [7, 3];
+    return [7, n - 100];
+  }
+  var ptable = document.getElementById('ptable');
+  var keysBox = document.getElementById('keys');
+  var elBig = document.getElementById('el-big');
+  var cells = {};
+  var pickedFam = null;
+  var pickedEl = null;
+
+  function showElement(n) {
+    var e = els[n - 1], c = catOf(n);
+    if (pickedEl) cells[pickedEl].setAttribute('aria-pressed', 'false');
+    pickedEl = n;
+    cells[n].setAttribute('aria-pressed', 'true');
+    elBig.className = 'el-big k-' + c;
+    document.getElementById('el-n').textContent = e.n;
+    document.getElementById('el-s').textContent = e.s;
+    document.getElementById('el-name').textContent = e.name;
+    document.getElementById('el-meta').innerHTML = '<span class="line">Atomic number: ' + e.n + '</span><span class="line">Atomic mass: ' + e.m + '</span><span class="line">Family: ' + fams[c][0] + '</span>';
+    document.getElementById('el-desc').textContent = fams[c][1];
+  }
+
+  els.forEach(function (e) {
+    var c = catOf(e.n), p = pos(e.n);
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'el k-' + c;
+    b.style.gridRow = p[0];
+    b.style.gridColumn = p[1];
+    b.setAttribute('aria-pressed', 'false');
+    b.setAttribute('aria-label', e.name + ', atomic number ' + e.n);
+    b.dataset.c = c;
+    b.innerHTML = '<span class="z">' + e.n + '</span>' + e.s;
+    b.addEventListener('click', function () { showElement(e.n); });
+    ptable.appendChild(b);
+    cells[e.n] = b;
+  });
+
+  Object.keys(fams).forEach(function (k) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'key k-' + k;
+    b.textContent = fams[k][0];
+    b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', function () {
+      pickedFam = pickedFam === k ? null : k;
+      keysBox.querySelectorAll('.key').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      if (pickedFam) b.setAttribute('aria-pressed', 'true');
+      ptable.classList.toggle('dim', !!pickedFam);
+      ptable.querySelectorAll('.el').forEach(function (x) { x.classList.toggle('hit', x.dataset.c === pickedFam); });
+    });
+    keysBox.appendChild(b);
+  });
+  showElement(1);
+
+  /* Students' corner */
+  var PHONE = '254742519786';
+  function wire(form, note, title) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var via = (e.submitter && e.submitter.dataset.via) || 'wa';
+      var d = new FormData(form);
+      var lines = [title + ' (Kathangachini Senior School)'];
+      var name = (d.get('name') || '').toString().trim();
+      if (name) lines.push('Name: ' + name);
+      if (d.get('cls')) lines.push('Class: ' + d.get('cls'));
+      if (d.get('subj')) lines.push('Subject: ' + d.get('subj'));
+      lines.push('', d.get('msg').toString().trim());
+      var text = lines.join('\n');
+      if (via === 'sms') {
+        note.textContent = 'Opening your messages app. Press send there to finish.';
+        window.location.href = 'sms:+' + PHONE + '?&body=' + encodeURIComponent(text);
+      } else {
+        note.textContent = 'Opening WhatsApp. Press send there to finish.';
+        window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+      }
+    });
+  }
+  wire(document.getElementById('sug-form'), document.getElementById('sug-note'), 'Suggestion for the Science Department');
+  wire(document.getElementById('ask-form'), document.getElementById('ask-note'), 'Question for the Science Department');
+
+  var dlg = document.getElementById('ask-dialog');
+  document.getElementById('ask-open').addEventListener('click', function () {
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+  });
+  function closeDlg() { if (typeof dlg.close === 'function') dlg.close(); else dlg.removeAttribute('open'); }
+  document.getElementById('ask-close').addEventListener('click', closeDlg);
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) closeDlg(); });
+
+  /* Teachers list from the school's Google Sheet.
+     After the sheet is published to the web as CSV, paste its link between the quotes below. */
+  var TEACHERS_CSV = '';
+  function parseCsv(text) {
+    var rows = [], row = [], cell = '', q = false, i, ch;
+    for (i = 0; i < text.length; i++) {
+      ch = text[i];
+      if (q) {
+        if (ch === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+        else if (ch === '"') q = false;
+        else cell += ch;
+      } else if (ch === '"') q = true;
+      else if (ch === ',') { row.push(cell); cell = ''; }
+      else if (ch === '\n' || ch === '\r') {
+        if (ch === '\r' && text[i + 1] === '\n') i++;
+        row.push(cell); rows.push(row); row = []; cell = '';
+      } else cell += ch;
+    }
+    if (cell || row.length) { row.push(cell); rows.push(row); }
+    return rows;
+  }
+  function renderStaff(rows) {
+    var head = rows.shift().map(function (h) { return h.trim().toLowerCase(); });
+    var iN = head.indexOf('name'), iR = head.indexOf('role'), iS = head.indexOf('subject'), iD = head.indexOf('description');
+    if (iN < 0) return;
+    var map = { biology: 'bio', chemistry: 'chem', physics: 'phys' };
+    var colours = { bio: 'var(--bio)', chem: 'var(--chem)', phys: 'var(--phys)', all: 'var(--ink)' };
+    var list = rows.filter(function (r) { return (r[iN] || '').trim(); });
+    if (!list.length) return;
+    staff.innerHTML = '';
+    list.forEach(function (r) {
+      var d = map[(r[iS] || '').trim().toLowerCase()] || 'all';
+      var li = document.createElement('li');
+      li.dataset.d = d;
+      li.style.setProperty('--c', colours[d]);
+      var n = document.createElement('strong'); n.textContent = r[iN].trim();
+      var ro = document.createElement('span'); ro.textContent = iR > -1 ? (r[iR] || '').trim() : '';
+      li.appendChild(n); li.appendChild(ro);
+      var desc = iD > -1 ? (r[iD] || '').trim() : '';
+      if (desc) { var p = document.createElement('p'); p.textContent = desc; li.appendChild(p); }
+      staff.appendChild(li);
+    });
+    people = staff.querySelectorAll('li');
+    apply(current);
+  }
+  if (TEACHERS_CSV) {
+    fetch(TEACHERS_CSV).then(function (r) { return r.text(); }).then(function (t) { renderStaff(parseCsv(t)); }).catch(function () {});
+  }
+
+  nextFact();
+})();
+</script>
+</body>
+</html>
