@@ -350,9 +350,9 @@ footer p { margin: 0 0 .3rem; color: var(--muted); }
         <table class="programs">
           <thead class="sr"><tr><th>Subject</th><th>Classes</th><th>Teacher</th></tr></thead>
           <tbody>
-            <tr><th scope="row">Biology</th><td>Grade 10, Form 3 and Form 4</td><td>Mr Ruben</td></tr>
-            <tr><th scope="row">Chemistry</th><td>Grade 10, Form 3 and Form 4</td><td>Mr Murithi</td></tr>
-            <tr><th scope="row">Physics</th><td>Grade 10, Form 3 and Form 4</td><td>Mr Lawi</td></tr>
+            <tr><th scope="row">Biology</th><td>Grade 10, Form 3 and Form 4</td><td data-teach="bio">Mr Ruben, Madam Fridah and Madam Jericca</td></tr>
+            <tr><th scope="row">Chemistry</th><td>Grade 10, Form 3 and Form 4</td><td data-teach="chem">Mr Murithi</td></tr>
+            <tr><th scope="row">Physics</th><td>Grade 10, Form 3 and Form 4</td><td data-teach="phys">Mr Lawi</td></tr>
           </tbody>
         </table>
       </div>
@@ -365,7 +365,7 @@ footer p { margin: 0 0 .3rem; color: var(--muted); }
       <p class="curriculum-note">Grade 10 learners follow the Competency Based Curriculum (CBC) senior school syllabus. Form 3 and Form 4 learners follow the KCSE syllabus. These are short summaries, so your teacher's notes and the official syllabus always come first.</p>
 
       <details class="subject" style="--c:var(--bio)" open>
-        <summary>Biology <small>Mr Ruben</small></summary>
+        <summary>Biology <small data-teach="bio">Mr Ruben, Madam Fridah and Madam Jericca</small></summary>
         <div class="body">
           <p>Biology is the study of living things and how they live, grow, reproduce and depend on their surroundings. Lessons mix theory with practical work such as using a microscope, testing foods and studying plants and animals.</p>
           <h4>What you study</h4>
@@ -390,7 +390,7 @@ footer p { margin: 0 0 .3rem; color: var(--muted); }
       </details>
 
       <details class="subject" style="--c:var(--chem)">
-        <summary>Chemistry <small>Mr Murithi</small></summary>
+        <summary>Chemistry <small data-teach="chem">Mr Murithi</small></summary>
         <div class="body">
           <p>Chemistry is the study of matter, what it is made of and how it changes. Lessons explain the reactions around us, from rusting and cooking to making soap, and include hands-on laboratory practicals.</p>
           <h4>What you study</h4>
@@ -416,7 +416,7 @@ footer p { margin: 0 0 .3rem; color: var(--muted); }
       </details>
 
       <details class="subject" style="--c:var(--phys)">
-        <summary>Physics <small>Mr Lawi</small></summary>
+        <summary>Physics <small data-teach="phys">Mr Lawi</small></summary>
         <div class="body">
           <p>Physics is the study of matter, energy, forces and how they interact. Lessons explain how everyday things work, from lights and machines to sound and heat, using measurements and experiments.</p>
           <h4>What you study</h4>
@@ -784,7 +784,7 @@ footer p { margin: 0 0 .3rem; color: var(--muted); }
 
   /* Teachers list from the school's Google Sheet.
      After the sheet is published to the web as CSV, paste its link between the quotes below. */
-  var TEACHERS_CSV = '';
+  var TEACHERS_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRjMuJYeptvelFOOSWnv5XIkNYavsLF20ZDGp-XCQMHqFV8GqLrmdrrTxn3BEfoetPAioZjSKD9YE__/pub?output=csv';
   function parseCsv(text) {
     var rows = [], row = [], cell = '', q = false, i, ch;
     for (i = 0; i < text.length; i++) {
@@ -803,6 +803,7 @@ footer p { margin: 0 0 .3rem; color: var(--muted); }
     if (cell || row.length) { row.push(cell); rows.push(row); }
     return rows;
   }
+  function cap(t) { t = (t || '').trim(); return t.charAt(0).toUpperCase() + t.slice(1); }
   function renderStaff(rows) {
     var head = rows.shift().map(function (h) { return h.trim().toLowerCase(); });
     var iN = head.indexOf('name'), iR = head.indexOf('role'), iS = head.indexOf('subject'), iD = head.indexOf('description');
@@ -818,11 +819,22 @@ footer p { margin: 0 0 .3rem; color: var(--muted); }
       li.dataset.d = d;
       li.style.setProperty('--c', colours[d]);
       var n = document.createElement('strong'); n.textContent = r[iN].trim();
-      var ro = document.createElement('span'); ro.textContent = iR > -1 ? (r[iR] || '').trim() : '';
+      var ro = document.createElement('span'); ro.textContent = iR > -1 ? cap(r[iR]) : '';
       li.appendChild(n); li.appendChild(ro);
-      var desc = iD > -1 ? (r[iD] || '').trim() : '';
+      var desc = iD > -1 ? cap(r[iD]) : '';
       if (desc) { var p = document.createElement('p'); p.textContent = desc; li.appendChild(p); }
       staff.appendChild(li);
+    });
+    /* keep the subjects table and subject notes in step with the sheet */
+    var by = { bio: [], chem: [], phys: [] };
+    list.forEach(function (r) {
+      var k = map[(r[iS] || '').trim().toLowerCase()];
+      if (k) by[k].push(r[iN].trim());
+    });
+    function join(a) { return a.length > 1 ? a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1] : a[0]; }
+    Object.keys(by).forEach(function (k) {
+      if (!by[k].length) return;
+      document.querySelectorAll('[data-teach="' + k + '"]').forEach(function (el) { el.textContent = join(by[k]); });
     });
     people = staff.querySelectorAll('li');
     apply(current);
