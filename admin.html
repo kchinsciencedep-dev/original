@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Staff area | Science Department, Kathangachini Senior School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #F2F5F8; --ink: #12263A; --muted: #4B5D6E; --line: #CBD5DF; --focus: #1F4FD8; --red: #C62828;
+  --bio: #1E7F55; --chem: #6B3FC4; --phys: #1F4FD8;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #0F1B27; --ink: #EAF0F6; --muted: #A6B5C4; --line: #2B3E51; --focus: #8FB0FF; --red: #FF6B6B; }
+}
+:root[data-theme="dark"] { --bg: #0F1B27; --ink: #EAF0F6; --muted: #A6B5C4; --line: #2B3E51; --focus: #8FB0FF; --red: #FF6B6B; }
+*, *::before, *::after { box-sizing: inherit; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 1.0625rem; line-height: 1.65; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.wrap { max-width: 56rem; margin: 0 auto; padding: 0 1.25rem; }
+header { padding: 2.5rem 0 1.5rem; }
+.school { font-family: var(--display); font-weight: 800; font-size: clamp(1.4rem, 4vw, 2rem); text-transform: uppercase; letter-spacing: -0.02em; color: var(--red); margin: 0 0 .5rem; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 1rem; }
+h2 { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.01em; margin: 0 0 .4rem; }
+p { margin: 0 0 1em; max-width: 60ch; }
+.lede { color: var(--muted); font-size: 1.15rem; }
+.notice { border-left: 4px solid var(--red); padding: .2rem 0 .2rem 1rem; margin: 1.5rem 0 2rem; }
+.notice p { margin: 0; }
+.cards { display: grid; gap: 1rem; padding: 0; list-style: none; margin: 0 0 2rem; }
+.card { border: 1px solid var(--line); border-left: 6px solid var(--c); border-radius: 8px; padding: 1.4rem 1.5rem; display: grid; gap: .2rem; }
+.card .who { font-family: var(--display); font-weight: 500; font-size: .9rem; color: var(--muted); margin: 0 0 .5rem; }
+.card p { color: var(--muted); }
+.open { display: inline-block; justify-self: start; font-family: var(--display); font-weight: 700; text-decoration: none; background: var(--ink); color: var(--bg); border: 2px solid var(--ink); border-radius: 999px; padding: .5rem 1.3rem; }
+.open:hover { background: none; color: var(--ink); }
+.how { border-top: 1px solid var(--line); padding: 1.5rem 0 3rem; }
+.how ol { padding-left: 1.2rem; max-width: 60ch; color: var(--muted); }
+.how li { margin-bottom: .5rem; }
+footer { border-top: 1px solid var(--line); padding: 1.5rem 0 3rem; color: var(--muted); font-size: .95rem; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="school">Kathangachini Senior School</p>
+    <h1>Science Department staff area</h1>
+    <p class="lede">For the admin and school management. Each link opens a Google Sheet, and only people who have been given access to that sheet can open it.</p>
+    <div class="notice"><p>Sign in with the Google account that has been given access. If a sheet says you need permission, ask the sheet's owner to share it with you.</p></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <ul class="cards">
+    <li class="card" style="--c:var(--phys)">
+      <h2>Science teachers</h2>
+      <p class="who">Admin can edit</p>
+      <p>Add a row to add a new science teacher, or delete a row to remove one. In the Subject column write Biology, Chemistry, Physics or Other. When the sheet is connected to the school website, the team list on the website follows this sheet.</p>
+      <a class="open" href="https://docs.google.com/spreadsheets/d/1DnkuDt_YSAfFRu5d_rp_AqJVjADtZXY1WrggtfXDq64/edit" target="_blank" rel="noopener">Open the teachers sheet</a>
+    </li>
+    <li class="card" style="--c:var(--red)">
+      <h2>Apparatus breakages</h2>
+      <p class="who">Private: admin and management only</p>
+      <p>Add a row each time a student breaks apparatus, with the date, name, class, item and details. Change Status to Resolved when it is settled, or delete the row to remove the record. This sheet is not shown on the school website.</p>
+      <a class="open" href="https://docs.google.com/spreadsheets/d/1XBW6RnwX9toyhJjZOvrMqz9fVwq7O4yQYq-LffjANe8/edit" target="_blank" rel="noopener">Open the breakages sheet</a>
+    </li>
+    <li class="card" style="--c:var(--bio)">
+      <h2>Materials for upcoming practicals</h2>
+      <p class="who">Admin edits, management views</p>
+      <p>The admin adds a row for each upcoming practical with the date, subject, class, materials and quantity. Management can open the sheet at any time to see what must be ready.</p>
+      <a class="open" href="https://docs.google.com/spreadsheets/d/18D_eiGO5TTyYYijIBUfOFbF4-wjTA3i7yUzZJxzz-tk/edit" target="_blank" rel="noopener">Open the materials sheet</a>
+    </li>
+  </ul>
+
+  <section class="how">
+    <h2>Who can see what</h2>
+    <ol>
+      <li>Open a sheet, click <strong>Share</strong> at the top right, and add a person's Google email address.</li>
+      <li>Give the admin <strong>Editor</strong> access so they can add and remove rows.</li>
+      <li>Give management <strong>Viewer</strong> access so they can read the sheet but not change it.</li>
+      <li>Keep <strong>General access</strong> set to <strong>Restricted</strong> so that only the people you add can open it.</li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><a href="index.html">Back to the Science Department website</a></div>
+</footer>
+</body>
+</html>
