@@ -183,6 +183,48 @@ dialog::backdrop { background: rgba(10, 20, 30, .55); }
 .dlg-body > p { color: var(--muted); }
 .video-link { margin-top: .6rem; }
 
+/* eye-catching video buttons */
+.video-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: .65rem 1.4rem;
+  border: 2px solid transparent;
+  color: #fff;
+  background: linear-gradient(90deg, #C62828, #E07B1F, #6B3FC4, #1F4FD8, #C62828);
+  background-size: 300% 100%;
+  box-shadow: 0 0 0 0 rgba(198, 40, 40, .55);
+  animation: video-gradient 5s linear infinite, video-pulse 1.8s ease-in-out infinite;
+}
+.video-cta:hover { transform: translateY(-2px); }
+.video-cta .dot {
+  width: .55rem; height: .55rem; border-radius: 50%;
+  background: #fff;
+  animation: video-blink 1s steps(1, end) infinite;
+}
+.video-row { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .8rem; }
+@keyframes video-gradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+@keyframes video-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(198, 40, 40, .55); }
+  50% { box-shadow: 0 0 0 10px rgba(198, 40, 40, 0); }
+}
+@keyframes video-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .video-cta { animation: none; }
+  .video-cta .dot { animation: none; }
+}
+
 /* subject notes */
 .curriculum-note { color: var(--muted); max-width: 62ch; margin-bottom: 1.5rem; }
 .subject { border-top: 1px solid var(--line); }
@@ -268,7 +310,10 @@ footer p { margin: 0 0 .3rem; color: var(--muted); }
           <h1>The important thing is not to stop questioning.</h1>
           <p class="by">Albert Einstein</p>
           <p class="lede">The Science Department at Kathangachini Senior School teaches biology, chemistry and physics from Grade 10 and Form 3 to Form 4. Pick a subject to see its news and its teacher.</p>
-          <a class="call hero-video" href="https://drive.google.com/drive/folders/11RTxyAHcQr2Oa-YPXS-DuZ8Zw1LOPljo" target="_blank" rel="noopener">Watch practical videos</a>
+          <div class="video-row">
+            <a class="video-cta hero-video" href="https://drive.google.com/drive/folders/11RTxyAHcQr2Oa-YPXS-DuZ8Zw1LOPljo" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Watch practical videos</a>
+            <a class="video-cta hero-video" href="https://mega.nz/folder/HpABgZTR#L1dOyx-hMSzTPA4EKsrqhg" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Watch video 2</a>
+          </div>
         </div>
         <div class="emblem" id="emblem">
           <svg viewBox="0 0 200 200" role="img" aria-label="Atom emblem with green, purple and blue orbits for biology, chemistry and physics">
@@ -460,7 +505,10 @@ footer p { margin: 0 0 .3rem; color: var(--muted); }
     <div class="wrap">
       <h2 style="margin-bottom:1rem">Practical videos</h2>
       <p>Watch recorded practical lessons for Biology, Chemistry and Physics. Use them to revise before your next lab session or practical paper.</p>
-      <a class="call video-link" href="https://drive.google.com/drive/folders/11RTxyAHcQr2Oa-YPXS-DuZ8Zw1LOPljo" target="_blank" rel="noopener">Open the practical videos on Google Drive</a>
+      <div class="video-row">
+        <a class="video-cta video-link" href="https://drive.google.com/drive/folders/11RTxyAHcQr2Oa-YPXS-DuZ8Zw1LOPljo" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Open practical videos (Drive)</a>
+        <a class="video-cta video-link" href="https://mega.nz/folder/HpABgZTR#L1dOyx-hMSzTPA4EKsrqhg" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Open video 2 (Mega)</a>
+      </div>
     </div>
   </section>
 
